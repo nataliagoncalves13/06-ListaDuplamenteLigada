@@ -76,8 +76,6 @@ void menu()
 
 void inicializar()
 {
-	// se a lista ja possuir elementos
-// libera a memoria ocupada
 	NO* aux = primeiro;
 	while (aux != NULL) {
 		NO* paraExcluir = aux;
@@ -121,7 +119,6 @@ void exibirElementos()
 
 void inserirElemento()
 {
-	// aloca memoria dinamicamente para o novo elemento
 	NO* novo = (NO*)malloc(sizeof(NO));
 	if (novo == NULL)
 	{
@@ -146,21 +143,34 @@ void inserirElemento()
 	}
 }
 
-
-// funções a serem implementadas no exericio
 void exibirReverso()
 {
-
+	NO* aux = ultimo;
+	while (aux != NULL) {
+	    cout << aux->valor;
+	    cout << endl;
+	    aux = aux->ant;
+	}
 }
 
 void excluirPrimeiroElemento()
 {
-
+    NO* aux = primeiro;
+    primeiro = primeiro->prox;
+    primeiro->ant = NULL;
+    free(aux);
+    cout << "Primeiro elemento deletado com sucesso.";
+    cout << endl;
 }
 
 void excluirUltimoElemento()
 {
-
+    NO* aux = ultimo;
+    ultimo = ultimo->ant;
+    ultimo->prox = NULL;
+    free(aux);
+    cout<< "Último elemento deletado com sucesso.";
+    cout << endl;
 }
 
 
